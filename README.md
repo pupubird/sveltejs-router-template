@@ -1,8 +1,8 @@
-# Sveltejs Router Template
+# 🧭 Sveltejs Router Template
 
 A declarative router for Sveltejs, no component importing required
 
-## Table of Contents
+## 📃 Table of Contents
 
 - [About](#about)
 - [Getting Started](#getting_started)
@@ -37,12 +37,12 @@ or
 npm run start
 ```
 
-You should see a server spinned up in your localhost!
+You should see a server spun up in your localhost!
 
-## Usage <a name = "usage"></a>
+## 🛠 Usage <a name = "usage"></a>
 
-This template is made with the philosophy of Encapsulation, all units should be able to deploy at anywhere.
-Hence, a general folder structure for an unit will be like this, with example:
+This template is made with the philosophy of Encapsulation, all units should be able to deploy anywhere.
+Hence, a general folder structure for a unit will be like this, with an example:
 
 ```folder
 src
@@ -55,8 +55,8 @@ src
 |_<All your other units' folder> - e.g. profile, event, marketplace...
 ```
 
-A sample file for unit's routes is inside `/src/routes.sample.js`. Simply copy that file and paste into your unit's folder!
+A sample file for the unit's routes is inside `/src/routes.sample.js`. Simply copy that file and paste it into your unit's folder!
 
 After that, if it's a first-level router ( such as the routes inside `/event` in this template ), add it in the `/src/routes.js` as shown in this template.
 
-And that's it! 🥳 no need to import any sveltejs routing component, and you get routing for free!
+And that's it! 🥳 no need to import any sveltejs routing component and you get routing for free!
