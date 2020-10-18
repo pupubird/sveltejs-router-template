@@ -8,5 +8,7 @@ let ROUTES = [
 ]
 export default Router(ROUTES, [ // Optional 
     // All sub-routers go here
+
+    // You are free to decide if it worth to be a sub-router
     ['/settings', FutureEventSettingsRouter]
 ])
