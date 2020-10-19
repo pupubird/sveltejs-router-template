@@ -80,6 +80,19 @@ And that's it! 🥳 no need to import any sveltejs routing component and you get
 
 For more information on how to achive pattern-base routing ( e.g. `/users/:id` ), please refer to [Navaid pattern](https://github.com/lukeed/navaid#pattern)
 
+To access to the params ( e.g.: The `/:id` ):
+
+```html
+<script>
+    import { params } from "@/components/stores.js";
+
+    // Accessing to the Route component directly is also possible
+    // You can think of route component be the <body> tag of the web app
+	// import { Route, params } from "@/components/stores.js";
+
+</script>
+```
+
 ## 🚀 Deploy <a name = "deploy"></a>
 
 ### With [Vercel](https://vercel.com/)
