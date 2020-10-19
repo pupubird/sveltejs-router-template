@@ -2,13 +2,15 @@
  Global router, see routes.sample.js if you would like to create new routes in folder.
 */
 import Navaid from "navaid";
-import EventRouter from '@/event/routes.js'
-import ProfileRouter from '@/profile/routes.js'
+import HomeRouter from '@/home/routes'
+import EventRouter from '@/event/routes'
+import ProfileRouter from '@/profile/routes'
 
 const router = Navaid("/");
 
 // Add first-level folder routers here
 [
+    ...HomeRouter('/'),
     ...EventRouter('/event'),
     ...ProfileRouter('/profile')
 ].map(route => {
