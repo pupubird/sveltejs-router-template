@@ -6,6 +6,7 @@ import { terser } from 'rollup-plugin-terser';
 import alias from "@rollup/plugin-alias";
 import path from "path";
 import { generateSW } from 'rollup-plugin-workbox'
+import cleaner from 'rollup-plugin-cleaner';
 
 const production = !process.env.ROLLUP_WATCH;
 const pwa = !process.env.DISABLE_PWA;
@@ -14,11 +15,11 @@ export default {
 	input: 'src/index.js',
 	output: {
 		name: 'app',
-		format: 'iife',
+		format: 'esm',
 		sourcemap: false,
 		dir: 'public/build',
 	},
-	inlineDynamicImports: true,
+	// inlineDynamicImports: true,
 	plugins: [
 		svelte({
 			// enable run-time checks when not in production
@@ -77,7 +78,14 @@ export default {
 					},
 				},
 			}],
-		})
+		}),
+
+		//Added cleaner to clean the chunk files on changes
+		cleaner({
+			targets: [
+				'public/build/'
+			]
+		}),
 	],
 
 
