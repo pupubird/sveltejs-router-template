@@ -8,6 +8,7 @@ import path from "path";
 import { generateSW } from 'rollup-plugin-workbox'
 
 const production = !process.env.ROLLUP_WATCH;
+const pwa = !process.env.DISABLE_PWA;
 
 export default {
 	input: 'src/index.js',
@@ -57,7 +58,7 @@ export default {
 		}),
 
 		// Workbox
-		generateSW({
+		pwa && generateSW({
 			swDest: 'public/sw.js',
 			globDirectory: 'public/',
 			globPatterns: [

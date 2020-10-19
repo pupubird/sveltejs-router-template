@@ -1,6 +1,6 @@
 # 🧭 Sveltejs Router Template
 
-A declarative router for Sveltejs, no component importing required.
+A declarative router for Sveltejs, no component importing required. Now with PWA support! 🥳
 
 ## 📃 Table of Contents
 
@@ -38,6 +38,18 @@ npm run start
 ```
 
 You should see a server spun up in your localhost!
+
+### Build
+
+To generate production build, run:
+
+```bash
+npm run build
+```
+
+### PWA
+
+To eject PWA mode, simply run the command `DISABLE_PWA=true npm run build`
 
 ## 🛠 Usage <a name = "usage"></a>
 
