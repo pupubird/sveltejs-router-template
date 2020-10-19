@@ -76,6 +76,10 @@ After that, if it's a first-level router ( such as the routes inside `/event` in
 
 And that's it! 🥳 no need to import any sveltejs routing component and you get routing for free!
 
+### Routing pattern
+
+For more information on how to achive pattern-base routing ( e.g. `/users/:id` ), please refer to [Navaid pattern](https://github.com/lukeed/navaid#pattern)
+
 ## 🚀 Deploy <a name = "deploy"></a>
 
 ### With [Vercel](https://vercel.com/)
