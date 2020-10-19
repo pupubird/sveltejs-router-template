@@ -8,6 +8,7 @@ A declarative router for Sveltejs, no component importing required. Now with PWA
 - [Getting Started](#getting_started)
 - [Usage](#usage)
 - [Contributing](../CONTRIBUTING.md)
+- [Deploy](#deploy)
 
 ## 💡 About <a name = "about"></a>
 
@@ -74,3 +75,23 @@ A sample file for the unit's routes is inside `/src/routes.sample.js`. Simply co
 After that, if it's a first-level router ( such as the routes inside `/event` in this template ), add it in the `/src/routes.js` as shown in this template.
 
 And that's it! 🥳 no need to import any sveltejs routing component and you get routing for free!
+
+## 🚀 Deploy <a name = "deploy"></a>
+
+### With [Vercel](https://vercel.com/)
+
+Install `vercel` if you haven't already:
+
+```bash
+npm install -g vercel
+```
+
+run `vercel` to configure your credential, else you do not have an account, simply go to their website and sign up one!
+
+then, simply run:
+
+```bash
+vercel deploy
+```
+
+And configure each settings to your own preferences.

@@ -13,3 +13,4 @@ public/*
 # Service Worker
 **/workbox*
 **/sw*
+.vercel
