@@ -1,7 +1,7 @@
 <script>
 	import { onDestroy } from "svelte";
 	import { Route, params } from "@/components/stores.js";
-	import router from "@/routes";
+	import router from "@/rootRoutes";
 
 	let uri = location.pathname;
 

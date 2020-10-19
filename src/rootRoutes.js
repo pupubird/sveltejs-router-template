@@ -8,7 +8,7 @@ import ProfileRouter from '@/profile/routes'
 
 const router = Navaid("/");
 
-// Add first-level folder routers here
+// Add first-level child routers here
 [
     ...HomeRouter('/'),
     ...EventRouter('/event'),

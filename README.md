@@ -136,6 +136,38 @@ export default Router(ROUTES, [ // Optional
 And that's all about routes.js! You can even do it recursively!
 Once you had done the setup, in the future if you would only just want to test out this particular unit, just drag and drop it and it will work as expected ( as there will be no more worried on routing modification! )!
 
+### rootRoutes.js
+
+An example of `rootRoutes.js` is as below:
+
+```javascript
+/*
+ Global router, see routes.sample.js if you would like to create new routes in folder.
+*/
+import Navaid from "navaid";
+import HomeRouter from '@/home/routes'
+import EventRouter from '@/event/routes'
+import ProfileRouter from '@/profile/routes'
+
+const router = Navaid("/");
+
+// Add first-level child routers here
+[
+    ...HomeRouter('/'),
+    ...EventRouter('/event'),
+    ...ProfileRouter('/profile')
+].map(route => {
+    router.on(route[0], route[1])
+})
+
+
+export default router
+```
+
+- The main difference between a `rootRoutes.js` and `routes.js` is, `rootRoutes.js` is the **root of all the routes**, and a `routes.js` are the **children** of the `rootRoutes.js`
+
+- You do **NOT** need to include the routers of all the child routers, only **first-level** child routers are required to import.
+
 ### Routing pattern
 
 For more information on how to achive pattern-base routing ( e.g. `/users/:id` ), please refer to [Navaid pattern](https://github.com/lukeed/navaid#pattern)
