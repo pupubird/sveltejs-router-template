@@ -2,4 +2,12 @@
 node_modules
 package-lock.json
 yarn.lock
-public
+
+public/*
+!public/index.html
+!public/global.css
+!public/favicon.png
+
+# Service Worker
+**/workbox*
+**/sw*
