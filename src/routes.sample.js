@@ -7,6 +7,6 @@ let ROUTES = [
     ['/', () => run(import("./Index.svelte"))]
 ]
 export default Router(ROUTES, [ // Optional 
-    // All sub-routers go here
+    // All child routers go here
     ['/future', EventFutureRouter]
 ])

@@ -76,6 +76,66 @@ After that, if it's a first-level router ( such as the routes inside `/event` in
 
 And that's it! 🥳 no need to import any sveltejs routing component and you get routing for free!
 
+### routes.js
+
+An example of a `routes.js` is as below:
+
+```javascript
+import run from "@/utils/run";
+import Router from "@/utils/generateRouter";
+import EventFutureRouter from './futureEvent/routes';
+
+let ROUTES = [
+    // Current routes go here
+    ['/', () => run(import("./Index.svelte"))]
+]
+export default Router(ROUTES, [ // Optional 
+    // All child routers go here
+    ['/future', EventFutureRouter]
+])
+```
+
+1. Import `run` function from `@/utils/run`
+    - `@/` is an alias that I created pointing to `src/`, it will be replace by rollup from `@/` into `src/` as absolute path, so you won't need to do long relative import anymore.
+2. Import `Router` function from `@/utils/generateRouter`;
+    - `Router` function will return a function for the parent to adjust it's base url, so as a child router you won't need to worry about putting all the base url --- it's all relative url!
+3. Create a `ROUTES` array in such structure:
+
+    ```javascript
+    let ROUTES = [
+        [ `<your relative url>`, ()=>run(import(`<your page component path, recommend to be relative>`)) ],
+    ]
+
+    // if you have routing pattern
+
+    let ROUTES = [
+        [ `<your relative url with routing pattern>`, (obj)=>run(import(`<your page component path, recommend to be relative>`),obj) ],
+    ]
+    ```
+
+     - The first item in the sub-array will be appended with base url from the parent router, the second item will be ran when the user landed on the page
+
+4. If you have child router:
+    - 4.1 Import the child router, e.g.:
+
+    ```javascript
+    import EventFutureRouter from './futureEvent/routes';
+    ```
+
+    - 4.2 Append it into `export default Router` function:
+
+    ```javascript
+    export default Router(ROUTES, [ // Optional
+        // All child routers go here
+        ['/future', EventFutureRouter]
+    ])
+    ```
+
+    - The `/future` here will then be processed by current router, if current router has a base url of `/event/`, this child router will then be appended with the base url to form: `/event/future`.
+
+And that's all about routes.js! You can even do it recursively!
+Once you had done the setup, in the future if you would only just want to test out this particular unit, just drag and drop it and it will work as expected ( as there will be no more worried on routing modification! )!
+
 ### Routing pattern
 
 For more information on how to achive pattern-base routing ( e.g. `/users/:id` ), please refer to [Navaid pattern](https://github.com/lukeed/navaid#pattern)
