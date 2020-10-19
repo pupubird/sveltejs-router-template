@@ -5,6 +5,7 @@ import commonjs from '@rollup/plugin-commonjs';
 import { terser } from 'rollup-plugin-terser';
 import alias from "@rollup/plugin-alias";
 import path from "path";
+import { generateSW } from 'rollup-plugin-workbox'
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -12,10 +13,11 @@ export default {
 	input: 'src/index.js',
 	output: {
 		name: 'app',
-		format: 'esm',
-		sourcemap: true,
-		dir: 'public',
+		format: 'iife',
+		sourcemap: false,
+		dir: 'public/build',
 	},
+	inlineDynamicImports: true,
 	plugins: [
 		svelte({
 			// enable run-time checks when not in production
@@ -23,7 +25,7 @@ export default {
 			// we'll extract any component CSS out into
 			// a separate file — better for performance
 			css: css => {
-				css.write('public/bundle.css');
+				css.write('public/build/bundle.css');
 			}
 		}),
 
@@ -52,8 +54,31 @@ export default {
 					replacement: path.resolve(__dirname, "src/")
 				},
 			]
+		}),
+
+		// Workbox
+		generateSW({
+			swDest: 'public/sw.js',
+			globDirectory: 'public/',
+			globPatterns: [
+				'**/*.{html,json,js,css}',
+			],
+			skipWaiting: true,
+			clientsClaim: true,
+			sourcemap: false,
+			runtimeCaching: [{
+				urlPattern: /\.(?:png|jpg|jpeg|svg)$/,
+				handler: 'CacheFirst',
+				options: {
+					cacheName: 'images',
+					expiration: {
+						maxEntries: 10,
+					},
+				},
+			}],
 		})
 	],
+
 
 	watch: {
 		clearScreen: false

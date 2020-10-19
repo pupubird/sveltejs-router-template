@@ -1,6 +1,6 @@
 # 🧭 Sveltejs Router Template
 
-A declarative router for Sveltejs, no component importing required
+A declarative router for Sveltejs, no component importing required.
 
 ## 📃 Table of Contents
 
