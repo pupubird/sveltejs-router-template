@@ -10,7 +10,7 @@ import cleaner from 'rollup-plugin-cleaner';
 import postcss from 'rollup-plugin-postcss'
 
 const production = !process.env.ROLLUP_WATCH;
-const pwa = !process.env.DISABLE_PWA;
+const pwa = !process.env.DISABLE_PWA && production;
 
 export default {
 	input: 'src/main.js',
