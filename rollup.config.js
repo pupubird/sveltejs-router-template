@@ -7,12 +7,13 @@ import alias from "@rollup/plugin-alias";
 import path from "path";
 import { generateSW } from 'rollup-plugin-workbox'
 import cleaner from 'rollup-plugin-cleaner';
+import postcss from 'rollup-plugin-postcss'
 
 const production = !process.env.ROLLUP_WATCH;
 const pwa = !process.env.DISABLE_PWA;
 
 export default {
-	input: 'src/index.js',
+	input: 'src/main.js',
 	output: {
 		name: 'app',
 		format: 'esm',
@@ -25,9 +26,11 @@ export default {
 			dev: !production,
 			// we'll extract any component CSS out into
 			// a separate file — better for performance
-			css: css => {
-				css.write('public/build/bundle.css');
-			}
+		}),
+
+
+		postcss({
+			extract: true,
 		}),
 
 		// If you have external dependencies installed from
