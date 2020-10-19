@@ -47,6 +47,8 @@ To generate production build, run:
 npm run build
 ```
 
+Do note that this is a Single-Page-Application, hence you will have to enable SPA mode for your server, `sirv` had been installed in this package hence you can run `sirv public --single` ( or `npm run start` ) to serve the files in SPA mode
+
 ### PWA
 
 To eject PWA mode, simply run the command `DISABLE_PWA=true npm run build`
