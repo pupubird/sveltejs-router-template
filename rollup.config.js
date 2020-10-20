@@ -8,6 +8,8 @@ import path from "path";
 import { generateSW } from 'rollup-plugin-workbox'
 import cleaner from 'rollup-plugin-cleaner';
 import postcss from 'rollup-plugin-postcss'
+import serve from 'rollup-plugin-serve'
+import livereload from 'rollup-plugin-livereload'
 
 const production = !process.env.ROLLUP_WATCH;
 const pwa = !process.env.DISABLE_PWA && production;
@@ -40,6 +42,14 @@ export default {
 		// https://github.com/rollup/rollup-plugin-commonjs
 		resolve(),
 		commonjs(),
+
+		// In dev mode, call `npm run start` once
+		// the bundle has been generated
+		!production && serve('public'),
+
+		// Watch the `public` directory and refresh the
+		// browser on changes when not in production
+		!production && livereload('public'),
 
 		replace({
 			'process.env.NODE_ENV': JSON.stringify(production ? 'production' : 'development')
