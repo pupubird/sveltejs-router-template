@@ -51,8 +51,7 @@ export default {
 			contentBase: 'public',
 
 			headers: {
-				'Access-Control-Allow-Origin': '*',
-				foo: 'bar'
+				'Access-Control-Allow-Origin': '*'
 			},
 		}),
 
