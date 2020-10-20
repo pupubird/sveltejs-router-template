@@ -45,7 +45,16 @@ export default {
 
 		// In dev mode, call `npm run start` once
 		// the bundle has been generated
-		!production && serve('public'),
+		!production && serve({
+			open: true,
+
+			contentBase: 'public',
+
+			headers: {
+				'Access-Control-Allow-Origin': '*',
+				foo: 'bar'
+			},
+		}),
 
 		// Watch the `public` directory and refresh the
 		// browser on changes when not in production
