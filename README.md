@@ -71,55 +71,26 @@ An example of a `routes.js` is as below:
 ```javascript
 import run from "@/utils/run";
 import Router from "@/utils/generateRouter";
+
+// Another `routes.js` file
 import EventFutureRouter from './futureEvent/routes';
 
 let ROUTES = [
     // Current routes go here
-    ['/', () => run(import("./Index.svelte"))]
+    ['/', () => run(import("./Index.svelte"))],
+
+    // Alternatively, use pattern
+    ['/:event_id', (obj)=>run(import('./Index.svelte'),obj)]
 ]
-export default Router(ROUTES, [ // Optional 
+export default Router(ROUTES, [ // Optional
     // All child routers go here
+    // Which, is another `routes.js` file
     ['/future', EventFutureRouter]
 ])
 ```
 
-1. Import `run` function from `@/utils/run`
-    - `@/` is an alias that I created pointing to `src/`, it will be replace by rollup from `@/` into `src/` as absolute path, so you won't need to do long relative import anymore.
-2. Import `Router` function from `@/utils/generateRouter`;
-    - `Router` function will return a function for the parent to adjust it's base url, so as a child router you won't need to worry about putting all the base url --- it's all relative url!
-3. Create a `ROUTES` array in such structure:
-
-    ```javascript
-    let ROUTES = [
-        [ `<your relative url>`, ()=>run(import(`<your page component path, recommend to be relative>`)) ],
-    ]
-
-    // if you have routing pattern
-
-    let ROUTES = [
-        [ `<your relative url with routing pattern>`, (obj)=>run(import(`<your page component path, recommend to be relative>`),obj) ],
-    ]
-    ```
-
-     - The first item in the sub-array will be appended with base url from the parent router, the second item will be ran when the user landed on the page
-
-4. If you have child router:
-    - 4.1 Import the child router, e.g.:
-
-    ```javascript
-    import EventFutureRouter from './futureEvent/routes';
-    ```
-
-    - 4.2 Append it into `export default Router` function:
-
-    ```javascript
-    export default Router(ROUTES, [ // Optional
-        // All child routers go here
-        ['/future', EventFutureRouter]
-    ])
-    ```
-
-    - The `/future` here will then be processed by current router, if current router has a base url of `/event/`, this child router will then be appended with the base url to form: `/event/future`.
+1. `@/` is an alias that I created pointing to `src/`, it will be replace by rollup from `@/` into `src/` as absolute path, so you won't need to do long relative import anymore.
+2. `Router` function will return a function for the parent to adjust it's base url, so as a child router you won't need to worry about putting all the base url --- it's all relative url!
 
 And that's all about routes.js! You can even do it recursively!
 Once you had done the setup, in the future if you would only just want to test out this particular unit, just drag and drop it and it will work as expected ( as there will be no more worried on routing modification! )!
@@ -141,7 +112,7 @@ const router = Navaid("/");
 
 // Add first-level child routers here
 [
-    ...HomeRouter('/'),
+    ...HomeRouter(''),
     ...EventRouter('/event'),
     ...ProfileRouter('/profile')
 ].map(route => {
