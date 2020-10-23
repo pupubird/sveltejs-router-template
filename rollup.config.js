@@ -8,8 +8,8 @@ import path from "path";
 import { generateSW } from 'rollup-plugin-workbox'
 import cleaner from 'rollup-plugin-cleaner';
 import postcss from 'rollup-plugin-postcss'
-import serve from 'rollup-plugin-serve'
 import livereload from 'rollup-plugin-livereload'
+import dev from 'rollup-plugin-dev'
 
 const production = !process.env.ROLLUP_WATCH;
 const pwa = !process.env.DISABLE_PWA && production;
@@ -43,16 +43,13 @@ export default {
 		resolve(),
 		commonjs(),
 
-		// In dev mode, call `npm run start` once
-		// the bundle has been generated
-		!production && serve({
-			open: true,
-
-			contentBase: 'public',
-
-			headers: {
-				'Access-Control-Allow-Origin': '*'
-			},
+		// Watch file changes
+		!production && dev({
+			dirs: ['public'],
+			spa: 'public/index.html',
+			port: 5000,
+			host: '0.0.0.0',
+			silent: true
 		}),
 
 		// Watch the `public` directory and refresh the
