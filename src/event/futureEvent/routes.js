@@ -4,7 +4,7 @@ import FutureEventSettingsRouter from './settings/routes';
 
 let ROUTES = [
     // Current routes go here
-    ['/', () => run(import("./Index.svelte"))]
+    ['/', run(import("./Index.svelte"))]
 ]
 export default Router(ROUTES, [ // Optional 
     // All sub-routers go here

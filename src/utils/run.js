@@ -1,5 +1,5 @@
 import { Route, params } from '@/components/stores.js';
-export default function run(moduleImportedPromise, obj) {
+function Run(moduleImportedPromise, obj) {
     moduleImportedPromise.then((m) => {
         params.set(obj || {});
         if (m.preload) {
@@ -12,5 +12,7 @@ export default function run(moduleImportedPromise, obj) {
             window.scrollTo(0, 0);
         }
     });
-
+}
+export default function run(moduleImportedPromise) {
+    return (obj) => Run(moduleImportedPromise, obj)
 }
