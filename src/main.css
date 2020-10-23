@@ -1,4 +1,7 @@
 /* Global css */
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
 h1{
     color:green;
 }

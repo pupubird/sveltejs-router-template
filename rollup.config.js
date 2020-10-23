@@ -48,7 +48,6 @@ export default {
 			dirs: ['public'],
 			spa: 'public/index.html',
 			port: 5000,
-			host: '0.0.0.0',
 			silent: true
 		}),
 
