@@ -57,18 +57,6 @@ To eject PWA mode, simply run the command `DISABLE_PWA=true npm run build`
 ## 🛠 Usage <a name = "usage"></a>
 
 This template is made with the philosophy of Encapsulation, all units should be able to deploy anywhere.
-Hence, a general folder structure for a unit will be like this, with an example:
-
-```folder
-src
-|_components - All your global components
-|_config - All your custom configuration
-|_utils - All global utils
-|_App.svelte - Main app
-|_index.js - Main script
-|_routes.js - Global routes
-|_<All your other units' folder> - e.g. profile, event, marketplace...
-```
 
 A sample file for the unit's routes is inside `/src/routes.sample.js`. Simply copy that file and paste it into your unit's folder!
 
