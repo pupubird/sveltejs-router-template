@@ -10,7 +10,7 @@ const router = Navaid("/");
 
 // Add first-level child routers here
 [
-    ...HomeRouter('/'),
+    ...HomeRouter(''),
     ...EventRouter('/event'),
     ...ProfileRouter('/profile')
 ].map(route => {
