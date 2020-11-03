@@ -28,17 +28,11 @@ npm install
 
 This repo is configured with `sirv` with SPA mode, hence simply run:
 
+### Development
+
 ```bash
 npm run dev
 ```
-
-or
-
-```bash
-npm run start
-```
-
-You should see a server spun up in your localhost!
 
 ### Build
 
@@ -49,6 +43,14 @@ npm run build
 ```
 
 Do note that this is a Single-Page-Application, hence you will have to enable SPA mode for your server, `sirv` had been installed in this package hence you can run `sirv public --single` ( or `npm run start` ) to serve the files in SPA mode
+
+### Serve
+
+```bash
+npm run start
+```
+
+You should see a server spun up in your localhost!
 
 ### PWA
 
