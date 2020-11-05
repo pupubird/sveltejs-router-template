@@ -15,7 +15,6 @@ const router = Navaid("/");
     ...ProfileRouter('/profile')
 ].map(route => {
     router.on(route[0], route[1])
-    console.log(route[0])
 });
 
 
