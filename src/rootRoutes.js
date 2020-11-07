@@ -16,7 +16,6 @@ const router = Navaid("/", run(import("./404.svelte")));
     ...ProfileRouter('/profile')
 ].map(route => {
     router.on(route[0], route[1])
-    console.log(route[0])
 });
 
 
