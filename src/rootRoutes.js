@@ -5,8 +5,9 @@ import Navaid from "navaid";
 import HomeRouter from '@/home/routes'
 import EventRouter from '@/event/routes'
 import ProfileRouter from '@/profile/routes'
+import run from '@/utils/run';
 
-const router = Navaid("/");
+const router = Navaid("/", run(import("./404.svelte")));
 
 // Add first-level child routers here
 [
