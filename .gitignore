@@ -3,12 +3,8 @@ node_modules
 package-lock.json
 yarn.lock
 
-public/*
-!public/index.html
-!public/global.css
-!public/favicon.png
-!public/icon.png
-!public/manifest.json
+public/build
+public/*.js
 
 # Service Worker
 **/workbox*
