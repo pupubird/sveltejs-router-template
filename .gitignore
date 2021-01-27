@@ -4,7 +4,8 @@ package-lock.json
 yarn.lock
 
 public/build
-public/*.js
+public/sw*.js
+public/workbox*.js
 
 # Service Worker
 **/workbox*
