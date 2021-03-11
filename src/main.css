@@ -1,7 +1,6 @@
 /* Global css */
-*{
-    font-family: Arial, Helvetica, sans-serif;
-}
-h1{
-    color:green;
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
