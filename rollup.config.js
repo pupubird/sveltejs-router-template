@@ -9,6 +9,7 @@ import { generateSW } from "rollup-plugin-workbox";
 import cleaner from "rollup-plugin-cleaner";
 import postcss from "rollup-plugin-postcss";
 import livereload from "rollup-plugin-livereload";
+import dev from "rollup-plugin-dev";
 
 const production = !process.env.ROLLUP_WATCH;
 const pwa = !process.env.DISABLE_PWA && production;
@@ -68,6 +69,13 @@ export default {
 
 		// Watch file changes
 		!production && serve(),
+		!production &&
+			dev({
+				dirs: ["public"],
+				spa: "public/index.html",
+				port: 5000,
+				silent: false,
+			}),
 
 		// Watch the `public` directory and refresh the
 		// browser on changes when not in production
