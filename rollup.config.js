@@ -6,10 +6,8 @@ import { terser } from "rollup-plugin-terser";
 import alias from "@rollup/plugin-alias";
 import path from "path";
 import { generateSW } from "rollup-plugin-workbox";
-import cleaner from "rollup-plugin-cleaner";
 import postcss from "rollup-plugin-postcss";
 import livereload from "rollup-plugin-livereload";
-import dev from "rollup-plugin-dev";
 
 const production = !process.env.ROLLUP_WATCH;
 const pwa = !process.env.DISABLE_PWA && production;
@@ -123,11 +121,6 @@ export default {
 					},
 				],
 			}),
-
-		//Added cleaner to clean the chunk files on changes
-		cleaner({
-			targets: ["public/build/"],
-		}),
 	],
 
 	watch: {
