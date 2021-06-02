@@ -8,6 +8,7 @@ import path from "path";
 import { generateSW } from "rollup-plugin-workbox";
 import postcss from "rollup-plugin-postcss";
 import livereload from "rollup-plugin-livereload";
+import del from "rollup-plugin-delete";
 
 const production = !process.env.ROLLUP_WATCH;
 const pwa = !process.env.DISABLE_PWA && production;
@@ -121,6 +122,8 @@ export default {
 					},
 				],
 			}),
+		// Clean up chunk files
+		del({ targets: "public/build/*", hook: "buildEnd" }),
 	],
 
 	watch: {
