@@ -76,13 +76,6 @@ export default {
 
 		// Watch file changes
 		!production && serve(),
-		!production &&
-			dev({
-				dirs: ["public"],
-				spa: "public/index.html",
-				port: 5000,
-				silent: false,
-			}),
 
 		// Watch the `public` directory and refresh the
 		// browser on changes when not in production
