@@ -40,12 +40,20 @@ function serve() {
 
 export default {
 	input: "src/main.js",
-	output: {
-		name: "app",
-		format: "esm",
-		sourcemap: false,
-		dir: "public/build",
-	},
+	output: production
+		? {
+				name: "app",
+				format: "esm",
+				sourcemap: false,
+				dir: "public/build",
+		  }
+		: {
+				name: "app",
+				format: "iife",
+				sourcemap: true,
+				dir: "public/build",
+		  },
+	inlineDynamicImports: !production,
 	plugins: [
 		svelte({
 			// enable run-time checks when not in production
